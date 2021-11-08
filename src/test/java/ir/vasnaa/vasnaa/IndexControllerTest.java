@@ -1,4 +1,4 @@
-package ir.jakharidi.jakharidi;
+package ir.vasnaa.vasnaa;
 
 import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;

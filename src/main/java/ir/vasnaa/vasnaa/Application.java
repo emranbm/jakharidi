@@ -1,4 +1,4 @@
-package ir.jakharidi.jakharidi;
+package ir.vasnaa.vasnaa;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
