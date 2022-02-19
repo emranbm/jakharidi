@@ -8,7 +8,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report! [link](../../README.md)
+        Thanks for taking the time to fill out this bug report! [link](README.md)
   - type: input
     id: contact
     attributes:
