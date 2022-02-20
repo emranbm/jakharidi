@@ -58,5 +58,5 @@ body:
       label: Code of Conduct
       description: Are you sure current maturity items can't be modified/generalized to include your concern?
       options:
-        - label: Yes
+        - label: Yes.
           required: true
