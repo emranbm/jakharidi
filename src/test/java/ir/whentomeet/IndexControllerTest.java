@@ -1,4 +1,4 @@
-package ir.vasnaa.vasnaa;
+package ir.whentomeet;
 
 import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;

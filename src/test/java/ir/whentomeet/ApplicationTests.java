@@ -1,4 +1,4 @@
-package ir.vasnaa.vasnaa;
+package ir.whentomeet;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
