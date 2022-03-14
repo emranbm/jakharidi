@@ -13,5 +13,6 @@ jobs:
           lfs: true
       - name: Checkout LFS objects
         run: git lfs checkout
-      - name: Run build
+      - name: Run test
+        working-directory: backend/
         run: ./gradlew test

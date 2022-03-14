@@ -14,12 +14,13 @@ jobs:
       - name: Checkout LFS objects
         run: git lfs checkout
       - name: Run build
+        working-directory: backend/
         run: ./gradlew build
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: whentomeet-jar
-          path: build/libs/whentomeet-0.0.1-SNAPSHOT.jar
+          path: backend/build/libs/whentomeet-0.0.1-SNAPSHOT.jar
   smoke-test:
     runs-on: ubuntu-20.04
     needs: build
