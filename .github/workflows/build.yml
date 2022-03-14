@@ -1,5 +1,5 @@
 ---
-name: Main Workflow
+name: Build Backend
 on:
   push:
     branches:
@@ -20,16 +20,6 @@ jobs:
         with:
           name: whentomeet-jar
           path: build/libs/whentomeet-0.0.1-SNAPSHOT.jar
-  test:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          lfs: true
-      - name: Checkout LFS objects
-        run: git lfs checkout
-      - name: Run build
-        run: ./gradlew test
   smoke-test:
     runs-on: ubuntu-20.04
     needs: build
