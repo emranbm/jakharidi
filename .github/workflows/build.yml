@@ -1,11 +1,11 @@
 ---
-name: Build Backend
+name: Build
 on:
   push:
     branches:
       - master
 jobs:
-  build:
+  backend-build:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -21,9 +21,9 @@ jobs:
         with:
           name: whentomeet-jar
           path: backend/build/libs/whentomeet-0.0.1-SNAPSHOT.jar
-  smoke-test:
+  backend-smoke-test:
     runs-on: ubuntu-20.04
-    needs: build
+    needs: backend-build
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v2

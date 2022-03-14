@@ -1,11 +1,11 @@
 ---
-name: Test Backend
+name: Test
 on:
   push:
     branches:
       - master
 jobs:
-  test:
+  backend-test:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
