@@ -15,7 +15,7 @@ jobs:
         run: git lfs checkout
       - name: Run build
         working-directory: backend/
-        run: ./mvnw package
+        run: ./mvnw package -DskipTests
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
