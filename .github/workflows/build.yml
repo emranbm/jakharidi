@@ -31,7 +31,10 @@ jobs:
           name: backend-jar
       - run: java -version
       - name: Start database
-        run: docker run -d -e POSTGRES_PASSWORD=admin --network host postgres:14.2-alpine3.15
+        run: |
+          docker run --name db-container -d -e POSTGRES_PASSWORD=admin --network host postgres:14.2-alpine3.15
+          sleep 10
+          docker exec db-container psql -U postgres -c 'CREATE DATABASE testdb'
       - name: Start the application
         run: |
           java -jar backend-0.0.1-SNAPSHOT.jar &
