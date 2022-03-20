@@ -16,7 +16,7 @@ jobs:
       - name: Start database
         run: |
           docker run --name db-container -d -e POSTGRES_PASSWORD=admin --network host postgres:14.2-alpine3.15
-          sleep 10
+          sleep 3
           docker exec db-container psql -U postgres -c 'CREATE DATABASE testdb'
       - name: Run test
         working-directory: backend/
