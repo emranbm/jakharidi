@@ -45,6 +45,6 @@ jobs:
           exit 1
           fi
           echo "Waiting for the app to start..."
-          sleep 2
+          sleep 3
       - name: Healthcheck
         run: curl --fail localhost:8080/actuator/health
