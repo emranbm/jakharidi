@@ -15,4 +15,4 @@ jobs:
         run: git lfs checkout
       - name: Run test
         working-directory: backend/
-        run: ./gradlew test
+        run: ./mvnw test

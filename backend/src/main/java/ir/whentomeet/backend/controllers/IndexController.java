@@ -1,5 +1,4 @@
-package ir.whentomeet.controllers;
-
+package ir.whentomeet.backend.controllers;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
