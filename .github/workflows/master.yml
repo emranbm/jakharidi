@@ -1,0 +1,62 @@
+---
+name: Master Workflow
+on:
+  push:
+    branches:
+      - master
+env:
+  DOCKER_REGISTRY_USER: emran.bm
+  DOCKER_REGISTRY_ADDRESS: registry.gitlab.com
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Checkout LFS objects
+        run: git lfs checkout
+      - name: Set version
+        run: echo "BACKEND_VERSION=snapshot-${GITHUB_SHA}" >> $GITHUB_ENV
+      - name: Login to Gitlab docker registry
+        run: echo ${{ secrets.DOCKER_REGISTRY_PASS }} | docker login -u ${DOCKER_REGISTRY_USER} --password-stdin ${DOCKER_REGISTRY_ADDRESS}
+      - name: Build images
+        run: docker-compose build --parallel
+      - name: Push images
+        run: docker-compose push
+
+  smoke-test:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set version
+        run: echo "BACKEND_VERSION=snapshot-${GITHUB_SHA}" >> $GITHUB_ENV
+      - name: Pull images
+        run: docker-compose pull
+      - name: Start services
+        run: docker-compose up --no-build -d
+      - name: Wait for services to be ready
+        run: sleep 3
+      - name: Healthcheck
+        run: curl --fail localhost/actuator/health
+
+  test-backend:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Checkout LFS objects
+        run: git lfs checkout
+      - name: Start database
+        run: docker-compose up -d database
+      - name: Wait for database to get ready
+        run: sleep 3
+      - name: Point database address to localhost
+        run: echo "127.0.0.1 database" | sudo tee /etc/hosts
+      - name: Provide .env variables
+        run: cat .env >> $GITHUB_ENV
+      - name: Run test
+        working-directory: backend/
+        run: ./mvnw test
