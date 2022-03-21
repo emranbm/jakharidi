@@ -37,7 +37,9 @@ jobs:
       - name: Start services
         run: docker-compose up --no-build -d
       - name: Wait for services to be ready
-        run: sleep 3
+        run: sleep 7
+      - name: Check logs
+        run: docker-compose logs
       - name: Healthcheck
         run: curl --fail localhost/actuator/health
 
