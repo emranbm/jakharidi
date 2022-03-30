@@ -15,7 +15,7 @@ public class TimespanElection {
     public static final int CODE_LENGTH = 8;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private long id;
     @NotNull
     private String code;

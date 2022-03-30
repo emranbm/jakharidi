@@ -1,7 +1,7 @@
 package ir.whentomeet.backend;
 
 import ir.whentomeet.backend.models.TimespanElection;
-import ir.whentomeet.backend.repositories.MeetingElectionRepository;
+import ir.whentomeet.backend.repositories.TimespanElectionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TimespanElectionEntityTest {
 
     @Autowired
-    private MeetingElectionRepository meetingElectionRepo;
+    private TimespanElectionRepository meetingElectionRepo;
 
     @Test
     void newlyCreatedEntityHasCode() {
