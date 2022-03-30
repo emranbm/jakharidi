@@ -10,7 +10,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import java.time.Instant;
 
 @Entity
-public class MeetingElection {
+public class TimespanElection {
 
     public static final int CODE_LENGTH = 8;
 
@@ -27,10 +27,10 @@ public class MeetingElection {
     private Instant lastModifiedDate;
 
 
-    public MeetingElection() {
+    public TimespanElection() {
     }
 
-    public MeetingElection(String title) {
+    public TimespanElection(String title) {
         this.title = title;
         autoAssignRandomCode();
     }

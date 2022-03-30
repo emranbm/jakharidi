@@ -1,6 +1,6 @@
 package ir.whentomeet.backend;
 
-import ir.whentomeet.backend.models.MeetingElection;
+import ir.whentomeet.backend.models.TimespanElection;
 import ir.whentomeet.backend.repositories.MeetingElectionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,24 +10,24 @@ import org.springframework.transaction.TransactionSystemException;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-public class MeetingElectionEntityTest {
+public class TimespanElectionEntityTest {
 
     @Autowired
     private MeetingElectionRepository meetingElectionRepo;
 
     @Test
     void newlyCreatedEntityHasCode() {
-        MeetingElection meetingElection = new MeetingElection("A meeting");
-        assertEquals(MeetingElection.CODE_LENGTH, meetingElection.getCode().length());
+        TimespanElection timespanElection = new TimespanElection("A meeting");
+        assertEquals(TimespanElection.CODE_LENGTH, timespanElection.getCode().length());
     }
 
     @Test
     void entityCantSaveWithoutCodeAndTitle() {
-        MeetingElection meetingElection = new MeetingElection();
-        assertNull(meetingElection.getCode());
-        assertNull(meetingElection.getTitle());
+        TimespanElection timespanElection = new TimespanElection();
+        assertNull(timespanElection.getCode());
+        assertNull(timespanElection.getTitle());
         try {
-            meetingElectionRepo.save(meetingElection);
+            meetingElectionRepo.save(timespanElection);
             fail("Expected not being able to save the entity. But it got saved!");
         } catch (TransactionSystemException e) {
         }
@@ -35,8 +35,8 @@ public class MeetingElectionEntityTest {
 
     @Test
     void differentInstancesHaveDifferentCodes(){
-        MeetingElection meetingElection1 = new MeetingElection("A meeting");
-        MeetingElection meetingElection2 = new MeetingElection("A meeting");
-        assertNotEquals(meetingElection1.getCode(), meetingElection2.getCode());
+        TimespanElection timespanElection1 = new TimespanElection("A meeting");
+        TimespanElection timespanElection2 = new TimespanElection("A meeting");
+        assertNotEquals(timespanElection1.getCode(), timespanElection2.getCode());
     }
 }
